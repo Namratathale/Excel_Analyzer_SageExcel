@@ -27,8 +27,8 @@ if (process.env.FRONTEND_URL) {
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or postman) OR if the origin is in our list
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    // FIX: Changed 'allowedOrigins' to 'whitelist' here
+    if (!origin || whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
