@@ -11,7 +11,7 @@ import aiRoutes from './routes/aiRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 
 // Load environment variables
-dotenv.config();
+dotenv.config({ path: '../.env' });
 
 // Connect to the database
 connectDB();

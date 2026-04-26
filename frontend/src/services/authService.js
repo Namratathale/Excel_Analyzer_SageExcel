@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// Use a relative path to leverage the Vite proxy configured in vite.config.js.
-// Any request to '/api/...' will be automatically forwarded to 'http://localhost:5001/api/...'.
-const API_URL = '/api/auth/';
+// Use direct URL to the backend server at http://localhost:5001/api/auth/.
+const API_URL = 'http://localhost:5001/api/auth/';
 
 // Register user
 const register = async (userData) => {

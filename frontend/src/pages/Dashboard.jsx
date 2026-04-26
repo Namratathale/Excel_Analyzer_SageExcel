@@ -50,10 +50,9 @@ const Dashboard = () => {
                         View Full History <FaHistory className="ml-2" />
                     </Link>
                 </div>
-                {/* --- FIX: Removed the duplicate mapping --- */}
-                {isHistoryLoading && history.length === 0 ? (
+                {isHistoryLoading ? (
                     <p className="mt-4 dark:text-gray-400">Loading your history...</p>
-                ) : history.length === 0 ? (
+                ) : !history || !Array.isArray(history) || history.length === 0 ? (
                     <p className="mt-4 text-gray-500 dark:text-gray-400">You have no saved analyses. Start by uploading a new file!</p>
                 ) : (
                     <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2 lg:grid-cols-3">
