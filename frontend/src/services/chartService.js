@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 // Use a relative path to leverage the Vite proxy.
-const API_URL = '/api/charts/';
-
+const API_URL = `${import.meta.env.VITE_API_URL}/api/charts/`;
 // Saves a new chart configuration
 const saveChart = async (chartData, token) => {
   const config = {

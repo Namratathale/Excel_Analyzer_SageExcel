@@ -27,14 +27,16 @@ if (process.env.FRONTEND_URL) {
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
+    // Allow requests with no origin (like mobile apps or postman) OR if the origin is in our list
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  optionsSuccessStatus: 200,
+  optionsSuccessStatus: 200
 };
+
 app.use(cors(corsOptions));
 
 // --- Middleware ---

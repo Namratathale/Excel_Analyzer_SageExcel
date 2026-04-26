@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 // Use direct URL to the backend server at http://localhost:5001/api/auth/.
-const API_URL = 'http://localhost:5001/api/auth/';
-
+const API_URL = `${import.meta.env.VITE_API_URL}/api/auth/`;
 // Register user
 const register = async (userData) => {
   const response = await axios.post(API_URL + 'register', userData);
