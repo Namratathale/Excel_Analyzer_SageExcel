@@ -27,13 +27,19 @@ if (process.env.FRONTEND_URL) {
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // FIX: Changed 'allowedOrigins' to 'whitelist' here
-    if (!origin || whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+    // 1. Allow requests with no origin (like Postman or server-to-server)
+    if (!origin) return callback(null, true);
+
+    // 2. Allow any localhost (for local development)
+    // 3. Allow ANY vercel.app domain (handles all production and preview URLs automatically)
+    if (origin.includes('localhost') || origin.includes('vercel.app')) {
+      return callback(null, true);
     }
+
+    // Block anything else
+    return callback(new Error('CORS policy violation'), false);
   },
+  credentials: true, // Important for authorization headers
   optionsSuccessStatus: 200
 };
 
