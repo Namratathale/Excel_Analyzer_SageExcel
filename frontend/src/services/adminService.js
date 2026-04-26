@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 // Use a relative path to leverage the Vite proxy.
-const API_URL = `${import.meta.env.VITE_API_URL}/api/charts/`;
-// Get all users (Admin only)
+const API_URL = `${import.meta.env.VITE_API_URL}/api/admin/`;
 const getUsers = async (token) => {
   const config = {
     headers: {
